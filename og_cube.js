@@ -4,7 +4,7 @@ import WebGL from "three/addons/capabilities/WebGL.js";
 if (!WebGL.isWebGLAvailable()) {
   const warning = WebGL.getWebGLErrorMessage();
   document.getElementById("container").appendChild(warning);
-};
+}
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -33,8 +33,7 @@ const cube = new THREE.Mesh(geometry, material);
 
 scene.add(cube);
 
-camera.position.z = 2
-;
+camera.position.z = 2;
 
 function animate() {
   requestAnimationFrame(animate);
