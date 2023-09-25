@@ -38,15 +38,15 @@ let sphere_details = {
   radius: 1,
   width: 16, // default is 32
   height: 8, // default is 16
-  color: 0xfdfefe, // white
-  wireframe: true,
+  // color: 0xfdfefe, // white
+  // wireframe: true,
 };
 
 const sphere_geometry = new THREE.SphereGeometry(
   sphere_details?.radius,
   sphere_details?.width,
-  sphere_details?.height,
-); 
+  sphere_details?.height
+);
 
 const sphere_material = new THREE.MeshBasicMaterial({
   color: 0xfdfefe, // white

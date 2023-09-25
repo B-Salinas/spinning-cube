@@ -14,6 +14,10 @@ const camera = new THREE.PerspectiveCamera(
   1000 // far, objects won't render if they are farther than this
 );
 const renderer = new THREE.WebGLRenderer();
+const axes = new THREE.AxesHelper( 5 );
+// x axis is read
+// y axis is green
+// z axis is blue (we are viewing everything from above, which is why we don't see blue)
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -31,7 +35,7 @@ const material = new THREE.MeshBasicMaterial({
 
 const cube = new THREE.Mesh(geometry, material);
 
-scene.add(cube);
+scene.add(cube, axes);
 
 camera.position.z = 2;
 
