@@ -31,11 +31,13 @@ document.body.appendChild(renderer.domElement);
 
 //
 
+// As I start to build more and more shapes, I think it would be better to have all the dimensions / shape creations on another file and to call that file over (importing/exporting) -- tomorrow though!
+
 // SPHERE
 let sphere_details = {
-  radius: 2.5,
-  width: 5,
-  height: 5,
+  radius: 1,
+  width: 16, // default is 32
+  height: 8, // default is 16
   color: 0xfdfefe, // white
   wireframe: true,
 };
@@ -43,44 +45,46 @@ let sphere_details = {
 const sphere_geometry = new THREE.SphereGeometry(
   sphere_details?.radius,
   sphere_details?.width,
-  sphere_details?.height
-);
+  sphere_details?.height,
+); 
 
-const sphere_material = new THREE.MeshBasicMaterial(
-  sphere_details?.color,
-  sphere_details?.wireframe
-);
+const sphere_material = new THREE.MeshBasicMaterial({
+  color: 0xfdfefe, // white
+  wireframe: true,
+});
 
 const sphere = new THREE.Mesh(sphere_geometry, sphere_material);
 
+//
+
 // CUBE
-let cube_details = {
-  width: 7,
-  height: 7,
-  depth: 7,
-  color: 0xaab7b8, // grey
-  wireframe: true,
+let house_cube_details = {
+  width: 2,
+  height: 2,
+  depth: 2,
+  // color: 0xaab7b8, // grey
+  // wireframe: true,
 };
 
-const cube_geometry = new THREE.BoxGeometry(
-  cube_details?.width,
-  cube_details?.height,
-  cube_details?.depth
+const house_cube_geometry = new THREE.BoxGeometry(
+  house_cube_details?.width,
+  house_cube_details?.height,
+  house_cube_details?.depth
 );
 
-const cube_material = new THREE.MeshBasicMaterial(
-  cube_details?.color,
-  cube_details?.wireframe
-);
+const house_cube_material = new THREE.MeshBasicMaterial({
+  color: 0xe5e7e9, // grey
+  wireframe: true,
+});
 
-const cube = new THREE.Mesh(cube_geometry, cube_material);
+const house_cube = new THREE.Mesh(house_cube_geometry, house_cube_material);
 
 //
 
 scene.add(sphere);
-scene.add(cube);
+scene.add(house_cube);
 
-camera.position.z = 3;
+camera.position.z = 5;
 
 function animate() {
   requestAnimationFrame(animate);
@@ -89,9 +93,9 @@ function animate() {
   sphere.rotation.y += 0.01;
   sphere.rotation.z += 0.01;
 
-  cube.rotation.x += 0.001;
-  cube.rotation.y += 0.001;
-  cube.rotation.z += 0.001;
+  house_cube.rotation.x += 0.001;
+  house_cube.rotation.y += 0.001;
+  house_cube.rotation.z += 0.001;
 
   renderer.render(scene, camera);
 }
