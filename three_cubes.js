@@ -1,4 +1,4 @@
-import * as TRHEE from "three";
+import * as THREE from "three";
 import WebGL from "three/addons/capabilities/WebGL.js";
 
 if (!WebGL.isWebGLAvailable()) {
@@ -62,9 +62,9 @@ document.body.appendChild(renderer.domElement);
 //   z_rotation,
 // };
 
-const small_geometry = new THREE.BoxGeometry(1, 1, 1);
-const medium_geometry = new THREE.BoxGeometry(4, 4, 4);
-const large_geometry = new THREE.BoxGeometry(9, 9, 9);
+const small_geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const medium_geometry = new THREE.BoxGeometry(1, 1, 1);
+const large_geometry = new THREE.BoxGeometry(1.7, 1.7, 1.7);
 
 const small_material = new THREE.MeshBasicMaterial({
   color: 0xfdfefe, // white
@@ -72,12 +72,14 @@ const small_material = new THREE.MeshBasicMaterial({
 });
 
 const medium_material = new THREE.MeshBasicMaterial({
-  color: 0xaab7b8, // grey
+  // color: 0xaab7b8, // grey
+  color: 0xfdfefe, // white
   wireframe: true,
 });
 
 const large_material = new THREE.MeshBasicMaterial({
-  color: 0x2e4053, // dark navy blue
+  // color: 0x2e4053, // dark navy blue
+  color: 0xfdfefe, // white
   wireframe: true,
 });
 
@@ -91,22 +93,22 @@ scene.add(small_cube);
 scene.add(medium_cube);
 scene.add(large_cube);
 
-camera.position.z = 2;
+camera.position.z = 3;
 
 function animate() {
   requestAnimationFrame(animate);
 
-  small_cube.rotation.x += 0.001;
-  small_cube.rotation.y += 0.001;
-  small_cube.rotation.z += 0.001;
+  small_cube.rotation.x += 0.005;
+  small_cube.rotation.y += 0.005;
+  small_cube.rotation.z += 0.005;
 
-  medium_cube.rotation.x += 0.01;
-  medium_cube.rotation.y += 0.01;
-  medium_cube.rotation.z += 0.01;
+  medium_cube.rotation.x += 0.003;
+  medium_cube.rotation.y += 0.003;
+  medium_cube.rotation.z += 0.003;
 
-  large_cube.rotation.x += 0.05;
-  large_cube.rotation.y += 0.05;
-  large_cube.rotation.z += 0.05;
+  large_cube.rotation.x += 0.002;
+  large_cube.rotation.y += 0.002;
+  large_cube.rotation.z += 0.002;
 
   renderer.render(scene, camera);
 }
