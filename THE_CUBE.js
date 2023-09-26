@@ -1,5 +1,6 @@
-import * as THREE from "three";
+import * as THREE from 'three';
 import WebGL from "three/addons/capabilities/WebGL.js";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 if (!WebGL.isWebGLAvailable()) {
   const warning = WebGL.getWebGLErrorMessage();
@@ -23,6 +24,9 @@ const FAR = 1000;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(FOV, ASPECT, NEAR, FAR);
 const renderer = new THREE.WebGLRenderer();
+
+const controls = new OrbitControls(camera, renderer.domElement);
+const axes = new THREE.AxesHelper(5);
 
 //
 
@@ -83,8 +87,11 @@ const house_cube = new THREE.Mesh(house_cube_geometry, house_cube_material);
 
 scene.add(sphere);
 scene.add(house_cube);
+scene.add(axes);
 
-camera.position.z = 5;
+// camera.position.z = 5;
+camera.position.set(2, 2, 2);
+controls.update();
 
 function animate() {
   requestAnimationFrame(animate);
@@ -93,9 +100,11 @@ function animate() {
   sphere.rotation.y += 0.01;
   sphere.rotation.z += 0.01;
 
-  house_cube.rotation.x += 0.001;
-  house_cube.rotation.y += 0.001;
-  house_cube.rotation.z += 0.001;
+  house_cube.rotation.x += 0.005;
+  house_cube.rotation.y += 0.005;
+  house_cube.rotation.z += 0.005;
+
+  controls.update();
 
   renderer.render(scene, camera);
 }
