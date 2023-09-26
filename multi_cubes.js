@@ -26,8 +26,8 @@ const FAR = 1000; // default is 2000
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(FOV, ASPECT, NEAR, FAR);
 const renderer = new THREE.WebGLRenderer();
-const controls = new OrbitControls(camera, renderer.domElement);
-const axes = new THREE.AxesHelper(5);
+// const controls = new OrbitControls(camera, renderer.domElement);
+// const axes = new THREE.AxesHelper(5);
 //
 
 renderer.setSize(screen?.width, screen?.height);
@@ -74,17 +74,17 @@ const medium_geometry = new THREE.BoxGeometry(1, 1, 1);
 const large_geometry = new THREE.BoxGeometry(1.7, 1.7, 1.7);
 
 const tiny_material = new THREE.MeshBasicMaterial({
-  color: 0xfdfefe, // white
+  color: 0xffffff, // white
   wireframe: true,
 });
 
 const small_material = new THREE.MeshBasicMaterial({
-  color: 0xfdfefe, // white
+  color: 0xa1b8ce, // ghost white
   wireframe: true,
 });
 
 const medium_material = new THREE.MeshBasicMaterial({
-  color: 0xaab7b8, // grey
+  color: 0x567999, // light slate grey
   // color: 0xfdfefe, // white
   wireframe: true,
 });
@@ -107,12 +107,12 @@ scene.add(small_cube);
 scene.add(medium_cube);
 scene.add(large_cube);
 
-scene.add(axes);
+// scene.add(axes);
 
-// camera.position.z = 3;
-camera.position.set(2, 2, 2);
-controls.update();
-controls.autoRotate = true;
+camera.position.z = 3;
+// camera.position.set(2, 2, 2);
+// controls.update();
+// controls.autoRotate = true;
 
 function animate() {
   requestAnimationFrame(animate);
@@ -133,7 +133,7 @@ function animate() {
   large_cube.rotation.y += 0.003;
   large_cube.rotation.z += 0.003;
 
-  controls.update();
+  // controls.update();
 
   renderer.render(scene, camera);
 }
