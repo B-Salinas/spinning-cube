@@ -26,8 +26,8 @@ const FAR = 1000; // default is 2000
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(FOV, ASPECT, NEAR, FAR);
 const renderer = new THREE.WebGLRenderer();
-// const controls = new OrbitControls(camera, renderer.domElement);
-// const axes = new THREE.AxesHelper(5);
+const controls = new OrbitControls(camera, renderer.domElement);
+const axes = new THREE.AxesHelper(5);
 //
 
 renderer.setSize(screen?.width, screen?.height);
@@ -109,10 +109,10 @@ scene.add(large_cube);
 
 // scene.add(axes);
 
-camera.position.z = 3;
-// camera.position.set(2, 2, 2);
-// controls.update();
-// controls.autoRotate = true;
+// camera.position.z = 3;
+camera.position.set(2, 2, 2);
+controls.update();
+controls.autoRotate = true;
 
 function animate() {
   requestAnimationFrame(animate);
@@ -129,11 +129,11 @@ function animate() {
   medium_cube.rotation.y += 0.005;
   medium_cube.rotation.z += 0.005;
 
-  large_cube.rotation.x += 0.003;
-  large_cube.rotation.y += 0.003;
-  large_cube.rotation.z += 0.003;
+  large_cube.rotation.x += 0.01;
+  large_cube.rotation.y += 0.01;
+  large_cube.rotation.z += 0.01;
 
-  // controls.update();
+  controls.update();
 
   renderer.render(scene, camera);
 }

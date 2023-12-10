@@ -86,7 +86,7 @@ const house_cube = new THREE.Mesh(house_cube_geometry, house_cube_material);
 
 scene.add(sphere);
 scene.add(house_cube);
-scene.add(axes);
+// scene.add(axes);
 
 // camera.position.z = 5;
 camera.position.set(2, 2, 2);
@@ -96,13 +96,13 @@ controls.autoRotate = true; // default is set to false
 function animate() {
   requestAnimationFrame(animate);
 
-  // sphere.rotation.x += 0.01;
-  // sphere.rotation.y += 0.01;
-  // sphere.rotation.z += 0.01;
+  sphere.rotation.x += 0.01;
+  sphere.rotation.y += 0.01;
+  sphere.rotation.z += 0.01;
 
-  // house_cube.rotation.x += 0.005;
-  // house_cube.rotation.y += 0.005;
-  // house_cube.rotation.z += 0.005;
+  house_cube.rotation.x += 0.005;
+  house_cube.rotation.y += 0.005;
+  house_cube.rotation.z += 0.005;
 
   controls.update();
 
